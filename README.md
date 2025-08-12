@@ -152,25 +152,23 @@
    - Pairplot: AGE, NCHILD, ASECWT의 분포와 고용 상태별 관계 시각화
    - Boxplot, Barplot: 인종별/혼인 상태별 평균 나이 비교
      
-<br>
 
 <p align="center">
   <img src="image/p_1.png" width="45%">
-  <img src="image/pp_1.png" width="45%">
+  <img src="image/pp_1.png" width="49%">
 </p>
 
-<br>
+
 
 <p align="center">
   <img src="image/p_2.png" width="45%">
-  <img src="image/pp_2.png" width="45%">
+  <img src="image/pp_2.png" width="49%">
 </p>
 
-<br>
 
 <p align="center">
   <img src="image/p_3.png" width="45%">
-  <img src="image/pp_3.png" width="45%">
+  <img src="image/pp_3.png" width="49%">
 </p>
 
 ---
