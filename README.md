@@ -159,6 +159,13 @@
   <img src="image/ppp_1.png" width="45%">
 </p>
 
+<br>
+
+<p align="center">
+  <img src="image/p_1.png" width="45%">
+  <img src="image/ppp_1.png" width="45%">
+</p>
+
 ---
 
 # 6. 인공지능 학습 결과서
