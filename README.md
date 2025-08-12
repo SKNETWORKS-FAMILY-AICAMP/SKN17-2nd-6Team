@@ -57,7 +57,7 @@
 
 | 데이터 이름                           | 파일 형식 / 수집 방법 | 출처 URL |
 |--------------------------------------|------------------------|----------|
-| 전국 전기차 충전소 표준데이터         | API / MYSQL              | [바로가기](https://www.data.go.kr/data/15013115/standard.do) |
+| IPUMS CPS     | API / MYSQL              | [바로가기](https://cps.ipums.org/cps/index.shtml) |
 | 지역, 월별 차량 등록 현황 (통계)      | 직접 다운로드 / CSV    | [바로가기](https://stat.molit.go.kr/portal/cate/statView.do?hRsId=58&hFormId=5498&hSelectId=1244&hPoint=00&hAppr=1&hDivEng=&oFileName=&rFileName=&midpath=&sFormId=5498&sStyleNum=562&settingRadio=xlsx) |
 | 현대자동차 홈페이지 FAQ               | Selenium 라이브러리     | [바로가기](https://www.hyundai.co.kr/main/mainRecommend) |
 | 포드자동차 홈페이지 FAQ              | Selenium 라이브러리     | [바로가기](https://www.frontierford.com/faq/ford-electric-lineup.htm?srsltid=AfmBOooBqN_a6WwQzWidD_fI7v7RV0FVtLepfbByBUO7VGRhPYe_fvdT) |
