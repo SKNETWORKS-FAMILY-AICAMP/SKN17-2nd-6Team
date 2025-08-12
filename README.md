@@ -132,7 +132,7 @@
 
 <p align="center">
   <img src="image/p_1.png" width="45%">
-  <img src="image/p_2.png" width="45%">
+  <img src="image/ppp_1.png" width="45%">
 </p>
 
 ---
