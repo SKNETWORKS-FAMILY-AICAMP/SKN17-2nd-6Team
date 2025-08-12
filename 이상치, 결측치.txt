@@ -1,0 +1,65 @@
+C:\Users\User\AppData\Local\Temp\ipykernel_44284\762562196.py:61: FutureWarning:
+
+The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+
+HTML 저장 완료:
+/mnt/data\private_insurance_coverage_yearly.html
+/mnt/data\private_insurance_coverage_by_age.html
+HTML 저장 완료: ./output\private_insurance_by_rate.html
+C:\Users\Playdata\AppData\Local\Temp\ipykernel_23124\3546153150.py:41: FutureWarning:
+
+The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+
+그래프가 HTML 파일로 저장되었습니다: ./data\private_insurance_by_age.html
+이 파일을 다운로드 후 브라우저에서 열면 인터랙티브하게 볼 수 있습니다.
+▶ 결측치 개수 by 컬럼
+YEAR            0
+SERIAL          0
+CPSID           0
+ASECFLAG        0
+ASECWTH         0
+PERNUM          0
+CPSIDP          0
+CPSIDV          0
+ASECWT          0
+AGE             0
+RACE            0
+MARST           0
+NCHILD          0
+EMPSTAT         0
+RACE_code       0
+MARST_code      0
+EMPSTAT_code    0
+dtype: int64 
+
+▶ 수치형 변수 기초 통계
+               YEAR        PERNUM       ASECWTH        ASECWT           AGE  \
+count  2.713615e+06  2.713615e+06  2.713615e+06  2.713615e+06  2.713615e+06   
+mean   2.016492e+03  2.258119e+00  1.836028e+03  1.882336e+03  3.660111e+01   
+std    4.253693e+00  1.390237e+00  1.316915e+03  1.374941e+03  2.272149e+01   
+min    2.010000e+03  1.000000e+00  5.251000e+01  5.017000e+01  0.000000e+00   
+25%    2.013000e+03  1.000000e+00  8.959308e+02  9.080100e+02  1.600000e+01   
+50%    2.016000e+03  2.000000e+00  1.665770e+03  1.684170e+03  3.600000e+01   
+75%    2.020000e+03  3.000000e+00  2.387640e+03  2.477627e+03  5.400000e+01   
+max    2.024000e+03  1.600000e+01  2.865431e+04  4.442383e+04  8.500000e+01   
+
+             NCHILD     RACE_code    MARST_code  EMPSTAT_code  
+count  2.713615e+06  2.713615e+06  2.713615e+06  2.713615e+06  
+mean   6.096834e-01  5.496222e-01  2.742591e+00  3.153863e+00  
+std    1.052502e+00  1.516492e+00  2.332647e+00  2.810644e+00  
+min    0.000000e+00  0.000000e+00  0.000000e+00  0.000000e+00  
+25%    0.000000e+00  0.000000e+00  0.000000e+00  2.000000e+00  
+50%    0.000000e+00  0.000000e+00  4.000000e+00  2.000000e+00  
+75%    1.000000e+00  0.000000e+00  5.000000e+00  6.000000e+00  
+max    9.000000e+00  2.500000e+01  5.000000e+00  8.000000e+00   
+
+▶ IQR 방식으로 계산한 이상치 개수
+YEAR         | 이상치:     0개 (0.00%)
+PERNUM       | 이상치: 29469개 (1.09%)
+ASECWTH      | 이상치: 76296개 (2.81%)
+ASECWT       | 이상치: 75181개 (2.77%)
+AGE          | 이상치:     0개 (0.00%)
+NCHILD       | 이상치: 189338개 (6.98%)
+RACE_code    | 이상치: 613710개 (22.62%)
+MARST_code   | 이상치:     0개 (0.00%)
+EMPSTAT_code | 이상치:     0개 (0.00%)
