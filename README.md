@@ -8,18 +8,42 @@
 
       
 ## 👥 팀 멤버 (개인 GitHub)
-
-| 이름  | GitHub 계정                                    |
-| ----- | ---------------------------------------------- |
-| 김민균 | [@alswhitetiger](https://github.com/alswhitetiger)   |
-| 성기혁 | [@venus241004](https://github.com/venus241004) |
-| 이가은 | [@Leegaeune](https://github.com/Leegaeune)   |
-| 이재은 | [@JAEEUN0129](https://github.com/JAEEUN0129)   |
-| 홍문봉 | [@Glowcloudy](https://github.com/Glowcloudy)   |
-
 <br>
+<table align="center">
+  <tr>
+    <td align="center" valign="top" style="padding: 10px;">
+      <strong>김민균</strong><br/>
+      <br/> 
+    </td>
+    <td align="center" valign="top" style="padding: 10px;">
+      <strong>성기혁</strong><br/>
+      <br/>
+    </td>
+    <td align="center" valign="top" style="padding: 1px;">
+      <strong>이가은</strong><br/>
+          <img alt="가은님" src="https://github.com/user-attachments/assets/46cf92d9-55d3-4ab8-b642-bc1b0c0a0fe5" width="150px"/>
+<br/>
+    </td>
+    <td align="center" valign="top" style="padding: 800px;">
+      <strong>이재은</strong><br/>
+          <img alt="재은님" src="https://github.com/user-attachments/assets/bc902cc2-8379-4857-b2d3-581c90f38277"  width="150px"/>
+<br/>
+    </td>
+    <td align="center" valign="top" style="padding: 500px;">
+      <strong>홍문봉</strong><br/>
+          <img height="1536" alt="문봉님" src="https://github.com/user-attachments/assets/d3f7a149-181f-472a-be6a-636380dfb4df" width="150px"/>
+<br/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/alswhitetiger">@alswhitetiger</a></td>
+    <td align="center"><a href=https://github.com/venus241004>@venus241004</a></td>
+    <td align="center"><a href=https://github.com/Leegaeune>@Leegaeune</a></td>
+    <td align="center"><a href=https://github.com/JAEEUN0129>@JAEEUN0129</a></td>
+    <td align="center"><a href=https://github.com/Glowcloudy>@Glowcloudy</a></td>
+  </tr>
+</table>
 
----
 
 # 2. 프로젝트개요
 
