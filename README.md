@@ -156,14 +156,21 @@
 
 <p align="center">
   <img src="image/p_1.png" width="45%">
-  <img src="image/ppp_1.png" width="45%">
+  <img src="image/pp_1.png" width="45%">
 </p>
 
 <br>
 
 <p align="center">
-  <img src="image/p_1.png" width="45%">
-  <img src="image/ppp_1.png" width="45%">
+  <img src="image/p_2.png" width="45%">
+  <img src="image/pp_2.png" width="45%">
+</p>
+
+<br>
+
+<p align="center">
+  <img src="image/p_3.png" width="45%">
+  <img src="image/pp_3.png" width="45%">
 </p>
 
 ---
@@ -198,7 +205,7 @@
 
 # 8. 한 줄 회고
 
-김민균:
+김민균: 많은 양의 데이터를 확인 하고 그걸 전처리와 이상치등을 제거 하는데 많은 시간이 걸린다는  것을 알았고 그래프를 각각 그렸을 때 그래프의 모양이 좋지 않았고 그래프를 합치고 하는 과정이 너무 나도 힘들다는 것을 알게 되었습니다. 또한 머신러닝을 돌렸을 때에도 점수가 이상하게 나와서 그것을 다시 정비하는 것에 어려움을 느끼게 되어서 다음 부터는 더욱더 많은 것을 습득하여서 완벽하게 하고 싶습니다.
 
 
 성기혁:
