@@ -176,11 +176,19 @@
 # 6. 인공지능 학습 결과서
 
 모델 : 
-1. XGBoost
-2. CatBoost
-3. LGBM
-4. RandomForest
-5. Logistic Regression
+1. **XGBoost**
+2. **CatBoost** <br>고객의 과거·현재 데이터를 비교해 나이 변화, 소득 변화율 등 변화량 특징을 생성하고,
+교육 수준(EDUC)·인종(RACE) 등 범주형 변수는 원-핫 인코딩 없이 CatBoost의 cat_features로 처리 -> <br> 
+Optuna로 CatBoost의 최적 하이퍼파라미터를 탐색해 Stratified K-Fold 교차 검증과 Early Stopping으로 성능을 검증한 뒤, 전체 데이터로 최종 학습 -> <br> 
+ROC AUC 등 지표로 평가하고, 모델·파라미터·특징 정보를 아티팩트로 저장해 재사용 가능하도록 구성 <br>
+
+4. **LGBM** <br> 고객의 과거·현재 데이터를 비교해 나이 변화, 소득 변화율 등 변화량 특징을 생성하고, 교육 수준·인종 등 범주형 변수를 원-핫 인코딩 -> <br>
+Optuna로 LightGBM의 최적 하이퍼파라미터를 탐색해 교차 검증으로 성능을 검증한 뒤, 전체 데이터로 최종 학습 -> <br>
+ROC AUC, Precision, Recall, F1-Score 등 다양한 지표로 평가, 모델·파라미터·특징 정보를 아티팩트로 저장해 재사용 가능하도록 구성 <br>
+
+5. **RandomForest**
+   
+6. **Logistic Regression**
 
 ---
 
