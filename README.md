@@ -4,6 +4,8 @@
 
 # 1. 팀소개
 
+###  ` ⭐️ 6조 Guardians of Health ⭐️ `
+
       
 ## 👥 팀 멤버 (개인 GitHub)
 
@@ -12,8 +14,10 @@
 | 김민균 | [@alswhitetiger](https://github.com/alswhitetiger)   |
 | 성기혁 | [@venus241004](https://github.com/venus241004) |
 | 이가은 | [@Leegaeune](https://github.com/Leegaeune)   |
-| 이재은 | [@JAEEUN0129](https://github.com/JAEEUN0129)   |
+🦾 이재은 | [@JAEEUN0129](https://github.com/JAEEUN0129)   |
 | 홍문봉 | [@Glowcloudy](https://github.com/Glowcloudy)   |
+
+<br>
 
 ---
 
@@ -21,32 +25,36 @@
 
 ## 💡 프로젝트 명
 
-### 인공지능 기반 민간 건강보험 이탈 예측 프로젝트
+### ` 인공지능 기반 민간 건강보험 이탈 예측 프로젝트  `
+<br>
 
 ## 🗓️ 프로젝트 기간
 
 ### 2025.08.12 ~ 2025.08.13
 
+<br>
 
 ## 🌟 프로젝트 소개
-
+#### `본 프로젝트는 미국 CPS(Annual Social and Economic Supplement) 데이터를 활용하여, 고객의 인구통계학적 정보(연령, 교육 수준, 결혼 여부, 고용 상태 등)와 경제적 지표(주당 소득, 노동시장 참여 여부, 군·공공·민간 보험 가입 여부)를 종합적으로 분석하여 민간 건강보험 이탈 여부를 예측하는 인공지능 모델을 개발하는 것을 목표로 합니다.<br>데이터 전처리 및 EDA 과정을 통해 유의미한 변수들을 추출하고, CatBoost, Logistic Regression, XGBoost, Elastic Net 등 다양한 머신러닝 알고리즘을 적용하여 성능을 비교·평가했습니다.`
  
-
-
+<br>
 
 ## 🚀 프로젝트 필요성(배경)
-
+ #### 민간 건강보험 시장에서는 고객의 이탈을 사전에 예측하고 이를 방지하는 전략이 중요한 과제로 부각되고 있습니다. 특히 소득 변화, 직업 상태, 공공보험 가입 여부 등의 요인이 민간보험 유지 여부에 직접적인 영향을 미칠 수 있습니다. 본 프로젝트는 이러한 다양한 속성 데이터를 기반으로 고객의 이탈 가능성을 예측함으로써, 보험사들이 보다 효율적인 리텐션(고객 유지) 전략을 수립할 수 있도록 지원합니다.
  
+<br>
 
+## ✅ 프로젝트 목표
 
-## ✅ 기대효과
+- 민간 건강보험 이탈 여부를 예측할 수 있는 인공지능 모델 개발
 
-1. 
+- 다양한 알고리즘(CatBoost, Logistic Regression, XGBoost, Elastic Net)의 성능 비교 및 최적 모델 선정
 
-2.  
+- 주요 영향 요인 분석을 통해 고객 이탈의 핵심 변수 도출
 
-3.  
+- 보험사 맞춤형 고객 관리 및 마케팅 전략 수립을 위한 데이터 기반 의사결정 지원
 
+<br>
 
 ---
 
@@ -62,7 +70,7 @@
 
 ---
 
-# 3. ⚙️ 기술스택
+# 3. 기술스택
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
   <img src="https://img.shields.io/badge/Jupyter_Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white">
