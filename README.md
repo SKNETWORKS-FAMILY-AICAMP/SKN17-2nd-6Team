@@ -13,11 +13,11 @@
   <tr>
     <td align="center" valign="top" style="padding: 10px;">
       <strong>김민균</strong><br/>
-      <br/> 
-    </td>
+      <img alt="민균" src="https://github.com/user-attachments/assets/d9659893-0432-4261-a73a-97f51efa97db" width="150px" />
+</td>
     <td align="center" valign="top" style="padding: 10px;">
       <strong>성기혁</strong><br/>
-      <br/>
+      <img alt="기혁님" src="https://github.com/user-attachments/assets/d57a5fb6-e897-40d9-9a91-fb3db9615ce2" width="150px" />
     </td>
     <td align="center" valign="top" style="padding: 1px;">
       <strong>이가은</strong><br/>
