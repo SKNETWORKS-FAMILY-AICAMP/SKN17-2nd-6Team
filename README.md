@@ -14,7 +14,7 @@
 | 김민균 | [@alswhitetiger](https://github.com/alswhitetiger)   |
 | 성기혁 | [@venus241004](https://github.com/venus241004) |
 | 이가은 | [@Leegaeune](https://github.com/Leegaeune)   |
-🦾 이재은 | [@JAEEUN0129](https://github.com/JAEEUN0129)   |
+| 이재은 | [@JAEEUN0129](https://github.com/JAEEUN0129)   |
 | 홍문봉 | [@Glowcloudy](https://github.com/Glowcloudy)   |
 
 <br>
