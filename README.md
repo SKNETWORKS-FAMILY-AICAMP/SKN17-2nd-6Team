@@ -138,6 +138,18 @@
 ---
 
 # 6. 인공지능 학습 결과서
+
+모델 : 
+1. XGBoost
+2. CatBoost
+3. LGBM
+4. RandomForest
+5. Logistic Regression
+
+---
+
+# 7. 수행결과(테스트 결과 화면 또는 시연 페이지)
+
 ![수행결과 이미지](image/stm1.png)
 ![수행결과 이미지](image/stm2.png)
 ![수행결과 이미지](image/stm3.png)
@@ -150,8 +162,6 @@
 ![수행결과 이미지](image/stm10.png)
 ![수행결과 이미지](image/stm11.png)
 
----
-# 7. 수행결과(테스트 결과 화면 또는 시연 페이지)
 
 ---
 
