@@ -103,16 +103,12 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
 ---
 
 # 3. 기술스택
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white">
-  <img src="https://img.shields.io/badge/Jupyter_Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white">
-  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white">
-  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white">
-  <img src="https://img.shields.io/badge/Matplotlib-CB3B27?style=for-the-badge&logo=matplotlib&logoColor=white">
-  <img src="https://img.shields.io/badge/Seaborn-98FB98?style=for-the-badge&logo=seaborn&logoColor=white">
-  <img src="https://img.shields.io/badge/Scikit-learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white"/>
-  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white">
-</p>
+| 분류 | 기술/도구 |
+|---|---|
+| 언어 | [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/) |
+| 개발 환경 | [![Jupyter Notebook](https://img.shields.io/badge/Jupyter%20Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://jupyter.org/) |
+| 라이브러리 | [![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/) [![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org/) [![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=matplotlib&logoColor=white)](https://matplotlib.org/) [![Seaborn](https://img.shields.io/badge/Seaborn-4EABC0?style=for-the-badge&logo=seaborn&logoColor=white)](https://seaborn.pydata.org/) [![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)](https://scikit-learn.org/) |
+| 협업 툴 | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/) |
 
 
 ---
@@ -125,37 +121,52 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
 # 5. 데이터 전처리 결과서
 ## 데이터 전처리 과정
 
-1. **데이터 로드**
+1. **데이터 로드 및 컬럼 분석**
    
-   ![전처리 코드 이미지](image/pre1.png)
+      <img width="761" height="216" alt="1 컬럼명" src="https://github.com/user-attachments/assets/701942e6-0f29-4c29-9f67-e3eb14ecaa92" />
+   
+      YEAR: Survey year, CPSIDP: person record, PHINSUR: Reported covered by private health insurance last year									
+	AGE: Age, NCHILD:	Number of own children in household, EARNWEEK: Weekly earnings
+				
+	EMPSTAT	Employment status								
+	LABFORCE	Labor force status																
+	HICHAMP	Covered by military health insurance last year				
+	CAIDLY	Covered by Medicaid last year							
+	MARST      	Marital status
 
-   - 원본 데이터에서 필요한 컬럼만 선택 로드 (usecols 사용) -> 불필요한 변수는 초기에 제외하여 메모리 절약 및 분석 속도 향상
-   - 주요 분석 컬럼(`YEAR`, `AGE`, `RACE`, `MARST`, `EDUC`, `EARNWEEK`, `PHINSUR` 등)만 추출
+      RACE: Race, EDUC: Educational attainment recode
+
+
+
+      SERIAL	Household serial number
+	CPSID	CPSID Household record
+	ASECFLAG	Flag for ASEC
+	ASECWTH	Annual Social and Economic Supplement Household weight
+	PERNUM	Person number in sample unit
+	CPSIDV	Validated Longitudinal Identifier
+	ASECWT	Annual Social and Economic Supplement Weight
+      Month       Month
+   
+   - 주요 분석 컬럼(`YEAR`, `AGE`, `RACE`, `MARST`, `EDUC`, `EARNWEEK`, `PHINSUR` 등)
+   - 사용되지 않는 컬럼 (SERIAL, ASECFLAG, ASECWTH, PERNUM, CPSIDV, ASECWT, Month) 
      
-2. **범주형 변수 숫자 인코딩**
+3. **사용할 샘플과 타겟데이터 설정**
    
-   ![전처리 코드 이미지](image/pre2.png)
-   
-   - RACE, MARST, EMPSTAT를 코드형으로 변환하여 RACE_code, MARST_code, EMPSTAT_code 생성
-   - 범주형 → 수치형 변환은 상관관계 분석, 모델 입력에 활용 가능
+   <img width="895" height="777" alt="2 사용할 샘플과 타겟데이터 설정" src="https://github.com/user-attachments/assets/e71e20bf-fb52-48bd-a090-0089e9fe8029" />
 
-3. **결측치 및 이상치 탐색**
-   
-   ![전처리 코드 이미지](image/pre3.png)
-   
-   - 컬럼별 결측치 개수 확인
-   - 수치형 변수 기초 통계로 이상치 후보 파악
+   - PHINSUR 변화를 target으로 설정, YEAR: Survey year, CPSIDP: person record를 Private Key로 사용해 한 사람 추적
+   - 샘플 수 확인
 
-4. **IQR 기반 이상치 제거**
+4. **변화량으로 피쳐엔지니어링**
    
-   ![전처리 코드 이미지](image/pre4.png)
-   
-   - Q1, Q3 사분위수를 이용해 IQR 계산
-   - 1.5 × IQR 기준 밖의 값은 이상치로 판단해 제거
-   - 이상치 제거 전후 박스플롯 비교
+   <img width="932" height="638" alt="3 변화량으로 피쳐엔지니어링" src="https://github.com/user-attachments/assets/2388b614-7cda-410f-8326-aaa2cc107cb7" />
 
+   - AGE, NCHILD의 변화량은 절대값으로 사용, EARNWEEK는 퍼센트 변화량으로 사용
+   - RACE와 EDUC을 제외한 범주형은 동일하게 변화여부 확인
+   - RACE와 EDUC은 모델별로 원핫인코딩, 그룹화 등 진행
+   - 위에 사진 바꿔야되요
 
-5. **시각화(EDA)**
+4. **시각화(EDA)**
    - 상관관계 히트맵: 선택된 수치형 변수 간 상관 분석
    - Pairplot: AGE, NCHILD, ASECWT의 분포와 고용 상태별 관계 시각화
    - Boxplot, Barplot: 인종별/혼인 상태별 평균 나이 비교
