@@ -161,14 +161,14 @@ HFLAG - 데이터 수집 방식, ASECFLAG - 조사 유형, ASECWTH - 가중치 �
    - 주요 분석 컬럼(`YEAR`, `AGE`, `RACE`, `MARST`, `EDUC`, `EARNWEEK`, `PHINSUR` 등)
    - 사용되지 않는 컬럼 (`SERIAL`, `ASECFLAG`, `ASECWTH`, `PERNUM`, `CPSIDV`, `ASECWT`, `Month` 등) 
      
-3. **사용할 샘플과 타겟데이터 설정**
+2. **사용할 샘플과 타겟데이터 설정**
    
    <img width="517.5" height="450" alt="2 사용할 샘플과 타겟데이터 설정" src="https://github.com/user-attachments/assets/e71e20bf-fb52-48bd-a090-0089e9fe8029" />
 
    - PHINSUR 변화를 target으로 설정, YEAR: Survey year, CPSIDP: person record를 Private Key로 사용해 한 사람 추적
    - 샘플 수 확인
 
-4. **변화량으로 피쳐엔지니어링**
+3. **변화량으로 피쳐엔지니어링**
    <img width="832" height="122" alt="수치형" src="https://github.com/user-attachments/assets/9a832b92-2fde-43ee-877d-f7e59fe784a4" />
 
    <img width="465" height="453" alt="EDUC 그룹화" src="https://github.com/user-attachments/assets/b1a2e66a-48ec-4b42-bc89-ab529bf8f989" />
