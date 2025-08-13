@@ -126,13 +126,10 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
       <img width="761" height="216" alt="1 컬럼명" src="https://github.com/user-attachments/assets/701942e6-0f29-4c29-9f67-e3eb14ecaa92" />
    
       YEAR: Survey year, CPSIDP: person record, PHINSUR: Reported covered by private health insurance last year									
-	AGE: Age, NCHILD:	Number of own children in household, EARNWEEK: Weekly earnings
+
+      AGE: Age, NCHILD:	Number of own children in household, EARNWEEK: Weekly earnings
 				
-	EMPSTAT	Employment status								
-	LABFORCE	Labor force status																
-	HICHAMP	Covered by military health insurance last year				
-	CAIDLY	Covered by Medicaid last year							
-	MARST      	Marital status
+	  EMPSTAT: Employment status, LABFORCE: Labor force status, HICHAMP: Covered by military health insurance last year, CAIDLY: Covered by Medicaid last year, MARST: Marital status
 
       RACE: Race, EDUC: Educational attainment recode
 
@@ -143,31 +140,31 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
 	<p align="center">
   	<img src="image/p_1.png" width="45%">
 	</p>
-	나이에 따른 인구수와 평균주당수입
+									  		  <p align='center'>나이에 따른 인구수와 평균주당수입</p>
 	<p align="center">
   	<img src="image/p_2.png" width="45%">
 	</p>
-	결혼 상태에 따른 인구수와 평균 자녀수
+	       								  	 <p align='center'>결혼 상태에 따른 인구수와 평균 자녀수</p>
 	<p align="center">
  	 <img src="image/p_3.png" width="45%">
 	</p>
-	교육수준에 따른 평균 주당 분포
+	      								    <p align='center'>교육수준에 따른 평균 주당 분포</p>
 
-      SERIAL	Household serial number
-	CPSID	CPSID Household record
-	ASECFLAG	Flag for ASEC
-	ASECWTH	Annual Social and Economic Supplement Household weight
-	PERNUM	Person number in sample unit
-	CPSIDV	Validated Longitudinal Identifier
-	ASECWT	Annual Social and Economic Supplement Weight
-      Month       Month
+SERIAL — 가구 일련번호 (5자리 숫자), PERNUM — 가구 내 개인 번호 (2자리), CPSIDV — 검증된 종단 식별자 (15자리 숫자), ASECWT — ASEC 개인 가중치 (소수 4자리 암시)
+
+추가적인 개인 식별용 변수, YEAR, CPSIDP로 한 사람을 추정할 수 있기 때문에 무의미
+
+HFLAG - 데이터 수집 방식, ASECFLAG - 조사 유형, ASECWTH - 가중치 스케일, Month - 월 정보
+
+위는 분석 대상의 실제 특성과는 직접적인 연관이 없고,
+모델 입력 변수로 활용할 경우 의미 있는 설명력이나 예측력을 제공하지 않는 보조·메타 정보이기 때문에 제외
    
    - 주요 분석 컬럼(`YEAR`, `AGE`, `RACE`, `MARST`, `EDUC`, `EARNWEEK`, `PHINSUR` 등)
-   - 사용되지 않는 컬럼 (SERIAL, ASECFLAG, ASECWTH, PERNUM, CPSIDV, ASECWT, Month) 
+   - 사용되지 않는 컬럼 (`SERIAL`, `ASECFLAG`, `ASECWTH`, `PERNUM`, `CPSIDV`, `ASECWT`, `Month` 등) 
      
 3. **사용할 샘플과 타겟데이터 설정**
    
-   <img width="895" height="777" alt="2 사용할 샘플과 타겟데이터 설정" src="https://github.com/user-attachments/assets/e71e20bf-fb52-48bd-a090-0089e9fe8029" />
+   <img width="517.5" height="450" alt="2 사용할 샘플과 타겟데이터 설정" src="https://github.com/user-attachments/assets/e71e20bf-fb52-48bd-a090-0089e9fe8029" />
 
    - PHINSUR 변화를 target으로 설정, YEAR: Survey year, CPSIDP: person record를 Private Key로 사용해 한 사람 추적
    - 샘플 수 확인
