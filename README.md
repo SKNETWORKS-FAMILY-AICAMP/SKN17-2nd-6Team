@@ -61,13 +61,13 @@
 ## 🌟 프로젝트 소개
 #### 본 프로젝트는 **미국 인구조사국(Census Bureau)과 노동통계국(BLS)**이 공동으로 수집하는 **CPS-ASEC(Annual Social and Economic Supplement)** 데이터를 활용하여 **민간 보험(Private Health Insurance) 이탈 여부**를 예측하는 것을 목표로 한다.  
 미국 거주자의 인구통계학적 정보(나이, 인종, 교육 수준 등)와 경제·고용 상태, 과거 및 현재 보험 가입 상태를 비교하여 **나이 변화, 소득 변화율** 등의 변화량 특징을 생성하였다.  
-이후 범주형 변수 처리, 하이퍼파라미터 최적화(Optuna, GridSearchCV), 교차 검증(Stratified K-Fold), Early Stopping 등의 절차를 거쳐 XGBoost, CatBoost, LightGBM, RandomForest, Logistic Regression 등 다양한 머신러닝 모델을 학습 및 평가하였다.  
+이후 범주형 변수 처리, 하이퍼파라미터 최적화(Optuna), 교차 검증(Stratified K-Fold), Early Stopping 등의 절차를 거쳐 XGBoost, CatBoost, LightGBM, RandomForest, Logistic Regression 등 다양한 머신러닝 모델을 학습 및 평가하였다.  
 최종적으로 ROC AUC 등 여러 성능 지표를 활용하여 모델을 비교하고, 아티팩트 저장을 통해 재사용 가능하도록 구성하였다.
  
 <br>
 
 ## 🚀 프로젝트 필요성(배경)
- #### 민간 보험 시장은 **고용 상태 변화**, **소득 수준 변화**, **주별 정책 차이**, **재난 발생 여부** 등에 따라 가입과 해지(이탈) 변동이 빈번하다.  
+ #### 민간 보험 시장은 **고용 상태 변화**, **소득 수준 변화** 등에 따라 가입과 해지(이탈) 변동이 빈번하다.  
 보험사는 이러한 이탈 가능성을 사전에 예측함으로써,  
 - **고객 유지율 향상**을 위한 사전 대응  
 - **맞춤형 상품 추천** 및 리마케팅  
@@ -133,8 +133,7 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
 
       RACE: Race, EDUC: Educational attainment recode
 
- - 상관관계 히트맵: 선택된 수치형 변수 간 상관 분석
-   - Pairplot: AGE, NCHILD, ASECWT의 분포와 고용 상태별 관계 시각화
+ 
    - Boxplot, Barplot: 인종별/혼인 상태별 평균 나이 비교
      
 	<p align="center">
@@ -212,7 +211,7 @@ HFLAG - 데이터 수집 방식, ASECFLAG - 조사 유형, ASECWTH - 가중치 �
 - **특징 생성**: 과거·현재 데이터 비교 후 변화량 특징 생성  
 - **범주형 처리**: EDUC, RACE 등 범주형 변수는 원-핫 인코딩 적용  
 - **하이퍼파라미터 탐색**: Optuna로 최적 파라미터 탐색  
-- **검증 방법**: 교차 검증  
+- **검증 방법**: Stratified K-Fold 교차 검증 
 - **모델 학습**: 최적 파라미터로 전체 데이터 학습  
 - **평가 지표**: ROC AUC, Precision, Recall, F1-Score  
 - **아티팩트 저장**: 모델, 파라미터, 특징 중요도 저장
@@ -236,27 +235,8 @@ HFLAG - 데이터 수집 방식, ASECFLAG - 조사 유형, ASECWTH - 가중치 �
 - **평가 지표**: ROC AUC, Accuracy, Precision, Recall  
 - **아티팩트 저장**: 모델(계수 포함), 파라미터, 스케일러 저장
 
-### 1. 프로젝트 개요
-주제: 머신러닝 기반 민간보험 고객이탈 예측
 
-목적: 고객 이탈 가능성을 사전에 예측하여 마케팅 전략 및 유지 비용 최적화
-
-데이터 개요: 데이터 건수, 피처 개수, 주요 변수 설명   ( -> 좀이따가 넣기 ) 
-
-
-### 2. 모델링 과정
-사용한 모델들: Logistic Regression, XGBoost, CatBoost, Random Forest
-
-버린 모델:
-
-Logistic Regression → 데이터가 선형성이 낮아 성능 저하
-
-성능이 떨어진 CatBoost 모델은 사용 제외
-
-채택한 방법: XGBoost + Random Forest + LGBM 앙상블 합치기
-
-
-### 3. 평가지표 선택과 이유
+### 1. 평가지표 선택과 이유
 Recall을 0.7까지 끌어올림
 
 Precision은 하락했지만, 보험 업종 특성상 실제 이탈 고객을 놓치지 않는 것이 더 중요하다고 판단
@@ -268,7 +248,7 @@ Recall↑ → 실제 이탈 고객을 많이 잡음
 Precision↓ → 오탐이 늘어 마케팅 비용 증가 → 저비용 유지 전략 필요
 
 
-### 4. 인사이트
+### 2. 인사이트
 Recall을 높이기 위해 Precision 일부 포기 → 저비용 마케팅 전략 필요
 
 Precision 보완 방안 → 고객군 세분화, 고위험군 집중 마케팅
