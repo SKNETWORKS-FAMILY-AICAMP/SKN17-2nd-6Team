@@ -72,7 +72,7 @@
 
 - 민간 건강보험 이탈 여부를 예측할 수 있는 인공지능 모델 개발
 
-- 다양한 알고리즘(CatBoost, Logistic Regression, XGBoost, Elastic Net)의 성능 비교 및 최적 모델 선정
+- 다양한 알고리즘(XGBoost, LGBM, CatBoost, Logistic Regression, RandomForest)의 성능 비교 및 최적 모델 선정
 
 - 주요 영향 요인 분석을 통해 고객 이탈의 핵심 변수 도출
 
