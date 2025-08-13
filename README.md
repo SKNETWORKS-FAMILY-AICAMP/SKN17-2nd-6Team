@@ -136,7 +136,22 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
 
       RACE: Race, EDUC: Educational attainment recode
 
-
+ - 상관관계 히트맵: 선택된 수치형 변수 간 상관 분석
+   - Pairplot: AGE, NCHILD, ASECWT의 분포와 고용 상태별 관계 시각화
+   - Boxplot, Barplot: 인종별/혼인 상태별 평균 나이 비교
+     
+	<p align="center">
+  	<img src="image/p_1.png" width="45%">
+	</p>
+	나이에 따른 인구수와 평균주당수입
+	<p align="center">
+  	<img src="image/p_2.png" width="45%">
+	</p>
+	결혼 상태에 따른 인구수와 평균 자녀수
+	<p align="center">
+ 	 <img src="image/p_3.png" width="45%">
+	</p>
+	교육수준에 따른 평균 주당 분포
 
       SERIAL	Household serial number
 	CPSID	CPSID Household record
@@ -170,30 +185,6 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
    - AGE, NCHILD의 변화량은 절대값으로 사용, EARNWEEK는 퍼센트 변화량으로 사용
    - RACE와 EDUC을 제외한 범주형은 동일하게 변화여부 확인
    - RACE와 EDUC은 모델별로 원핫인코딩, 그룹화 등 진행
-
-4. **시각화(EDA)**
-   - 상관관계 히트맵: 선택된 수치형 변수 간 상관 분석
-   - Pairplot: AGE, NCHILD, ASECWT의 분포와 고용 상태별 관계 시각화
-   - Boxplot, Barplot: 인종별/혼인 상태별 평균 나이 비교
-     
-
-<p align="center">
-  <img src="image/p_1.png" width="45%">
-  <img src="image/pp_1.png" width="49%">
-</p>
-
-
-
-<p align="center">
-  <img src="image/p_2.png" width="45%">
-  <img src="image/pp_2.png" width="49%">
-</p>
-
-
-<p align="center">
-  <img src="image/p_3.png" width="45%">
-  <img src="image/pp_3.png" width="49%">
-</p>
 
 ---
 
