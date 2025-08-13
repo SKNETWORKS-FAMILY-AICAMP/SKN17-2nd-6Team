@@ -158,13 +158,18 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
    - 샘플 수 확인
 
 4. **변화량으로 피쳐엔지니어링**
-   
-   <img width="932" height="638" alt="3 변화량으로 피쳐엔지니어링" src="https://github.com/user-attachments/assets/2388b614-7cda-410f-8326-aaa2cc107cb7" />
+   <img width="832" height="122" alt="수치형" src="https://github.com/user-attachments/assets/9a832b92-2fde-43ee-877d-f7e59fe784a4" />
+
+   <img width="465" height="453" alt="EDUC 그룹화" src="https://github.com/user-attachments/assets/b1a2e66a-48ec-4b42-bc89-ab529bf8f989" />
+
+   <img width="376" height="372" alt="RACE 그룹화" src="https://github.com/user-attachments/assets/e278dc11-0cd2-4c5c-a9f9-f805d70fb319" />
+
+   <img width="683" height="65" alt="범주형 변화여부 EDUC RACE빼야함" src="https://github.com/user-attachments/assets/d46d1982-4ef2-4a91-b2dc-2de3adbafcf9" />
+
 
    - AGE, NCHILD의 변화량은 절대값으로 사용, EARNWEEK는 퍼센트 변화량으로 사용
    - RACE와 EDUC을 제외한 범주형은 동일하게 변화여부 확인
    - RACE와 EDUC은 모델별로 원핫인코딩, 그룹화 등 진행
-   - 위에 사진 바꿔야되요
 
 4. **시각화(EDA)**
    - 상관관계 히트맵: 선택된 수치형 변수 간 상관 분석
