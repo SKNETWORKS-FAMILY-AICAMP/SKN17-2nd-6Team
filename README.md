@@ -59,7 +59,7 @@
 <br>
 
 ## 🌟 프로젝트 소개
-#### 본 프로젝트는 미국 CPS(Annual Social and Economic Supplement) 데이터를 활용하여, 고객의 인구통계학적 정보(연령, 교육 수준, 결혼 여부, 고용 상태 등)와 경제적 지표(주당 소득, 노동시장 참여 여부, 군·공공·민간 보험 가입 여부)를 종합적으로 분석하여 민간 건강보험 이탈 여부를 예측하는 인공지능 모델을 개발하는 것을 목표로 합니다.<br>데이터 전처리 및 EDA 과정을 통해 유의미한 변수들을 추출하고, CatBoost, Logistic Regression, XGBoost, Elastic Net 등 다양한 머신러닝 알고리즘을 적용하여 성능을 비교·평가했습니다.
+#### 본 프로젝트는 미국 CPS(Integrated Public Use Microdata Series, Current Population Survey) 데이터를 활용하여, 고객의 인구통계학적 정보(연령, 교육 수준, 결혼 여부, 고용 상태 등)와 경제적 지표(주당 소득, 노동시장 참여 여부, 군·공공·민간 보험 가입 여부)를 종합적으로 분석하여 민간 건강보험 이탈 여부를 예측하는 인공지능 모델을 개발하는 것을 목표로 합니다.<br>데이터 전처리 및 EDA 과정을 통해 유의미한 변수들을 추출하고, CatBoost, Logistic Regression, XGBoost, Elastic Net 등 다양한 머신러닝 알고리즘을 적용하여 성능을 비교·평가했습니다.
  
 <br>
 
