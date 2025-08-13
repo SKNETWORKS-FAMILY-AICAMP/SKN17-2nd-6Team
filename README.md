@@ -136,18 +136,19 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
  
    - Boxplot, Barplot: 인종별/혼인 상태별 평균 나이 비교
      
-	<p align="center">
-  	<img src="image/p_1.png" width="45%">
-	</p>
-									  		  <p align='center'>나이에 따른 인구수와 평균주당수입</p>
-	<p align="center">
-  	<img src="image/p_2.png" width="45%">
-	</p>
-	       								  	 <p align='center'>결혼 상태에 따른 인구수와 평균 자녀수</p>
-	<p align="center">
- 	 <img src="image/p_3.png" width="45%">
-	</p>
-	      								    <p align='center'>교육수준에 따른 평균 주당 분포</p>
+<p align="center">
+    <img src="image/p_1.png" width="70%">
+</p>
+<p align='center'>나이에 따른 인구수와 평균주당수입</p>
+<p align="center">
+    <img src="image/p_2.png" width="70%">
+</p>
+<p align='center'>결혼 상태에 따른 인구수와 평균 자녀수</p>
+<p align="center">
+    <img src="image/p_3.png" width="70%">
+</p>
+<p align='center'>교육수준에 따른 평균 주당 분포</p>
+
 
 SERIAL — 가구 일련번호 (5자리 숫자), PERNUM — 가구 내 개인 번호 (2자리), CPSIDV — 검증된 종단 식별자 (15자리 숫자), ASECWT — ASEC 개인 가중치 (소수 4자리 암시)
 
