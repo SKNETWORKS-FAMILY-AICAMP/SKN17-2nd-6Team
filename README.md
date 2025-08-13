@@ -283,15 +283,15 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
 
 # 7. 수행결과(테스트 결과 화면 또는 시연 페이지)
 
-<p align="center">
+
   <img src="https://github.com/user-attachments/assets/eb2ed917-91ee-457d-8612-ab0852a2528b" width="80%" alt="최종 선정된 다섯가지 모델들과 지표들"/>
-</p>
+
 
 📝 다섯 가지 모델 별 평가
 
-<p align="center">
+
   <img src="https://github.com/user-attachments/assets/88cdbb76-fd45-431c-9ea1-d92653f6df62" width="80%" alt="모델별 평가"/>
-</p>
+
 
 - **CatBoost** → Precision과 Recall의 값 변동 폭이 너무 커서 제외.
 - **Logistic Regression** → 변수 간 관계가 선형적이지 않고, 성능이 낮아 제외.
