@@ -244,17 +244,119 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
 
 # 7. 수행결과(테스트 결과 화면 또는 시연 페이지)
 
-![수행결과 이미지](image/stm1.png)
-![수행결과 이미지](image/stm2.png)
-![수행결과 이미지](image/stm3.png)
-![수행결과 이미지](image/stm4.png)
-![수행결과 이미지](image/stm5.png)
-![수행결과 이미지](image/stm6.png)
-![수행결과 이미지](image/stm7.png)
-![수행결과 이미지](image/stm8.png)
-![수행결과 이미지](image/stm9.png)
-![수행결과 이미지](image/stm10.png)
-![수행결과 이미지](image/stm11.png)
+<img width="1142" height="163" alt="8 최종 선정된 다섯가지 모델들과 지표들" src="https://github.com/user-attachments/assets/d1dcf395-56be-423a-a40f-e6712111f036" />
+다섯가지 모델 별 평가
+
+<img width="702" height="165" alt="9 catboost의 경우 진행하다보니 precision과 recall의 값이 너무 크게 변화하는 걸 확인해서 버림" src="https://github.com/user-attachments/assets/4c0b018e-2e2e-42e9-8ff3-dabe2b403650" />
+CatBoost의 경우 진행하다보니 precision과 recall의 값이 너무 크게 변화하는 걸 확인해서 사용하지 않기로 결정.
+logistic regression의 경우 변수간의 관계가 선형적이지 않고 값도 다른 모델에 비해 좋지 않기 때문에 사용하지 않기로 결정.
+
+<img width="1105" height="136" alt="10 RF XGB LGBM + 세가지 합 친SOFTVOTE 로진행" src="https://github.com/user-attachments/assets/916c4652-67c7-4dd9-81ea-328d1668faea" />
+최종적으로 선정된 XGB, LGBM, RandomForest를
+지표 향상을 위해 softvoting방식으로 사용
+
+<img width="1050" height="750" alt="softvote_confusion_counts_vs_target_recall" src="https://github.com/user-attachments/assets/c20fab20-02f7-4e92-b9ff-1a7535b33157" />
+<img width="1050" height="750" alt="softvote_threshold_vs_target_recall" src="https://github.com/user-attachments/assets/cf12e6f6-1e27-408a-ad28-61862685d24c" />
+
+보험 이탈 예측이 주 목적이기 때문에 recall을 가장 중요한 지표라고 판단
+
+<img width="753" height="103" alt="12 recall 이0 7, 0 8인 경우 다 른값들 을비교" src="https://github.com/user-attachments/assets/edea85a2-f4d2-4ba6-93c7-265af3a8b9c8" />
+softvote방식에서 recall값에 따른 precision과 confusion matrix값을 확인
+
+recall에 따른 요약
+Recall ↑ 0.70 → 0.80로 올리면 놓치는 이탈(FN)이 5,001 → 3,389 (32% 감소)
+즉, 더 많은 이탈자를 잡아냄. Precision ↓
+0.1400 → 0.1299 (약 7% 감소)
+잡아낸 사람 중 실제 이탈자가 아닐 확률이 조금 더 높아짐.
+FP(오탐) 증가
+73,707 → 91,159 (약 23% 증가)
+불필요하게 '이탈'로 분류되는 고객 수가 크게 늘어남.
+F1 Score ↓
+0.2337 → 0.2236 (약 4% 감소)
+Precision 하락 폭이 Recall 상승 효과보다 커서 F1은 떨어짐.
+선택 가이드
+Recall 0.70 → 균형형. Precision과 F1이 조금 더 높음.
+⇒ "이탈자 놓침도 줄이고, 오탐 부담도 너무 크지 않게" 하려면 적합.
+Recall 0.80 → 공격형. 놓치는 이탈자를 최소화하려고 FP 증가 감수.
+⇒ "이탈을 놓치는 게 훨씬 큰 손실"인 상황(예: 보험 해약 방지 캠페인)이라면 적합.
+
+최종 결론 : 0.7 > 0.8로 늘릴경우 
+FP(오탐)가 73,707 → 91,159 (약 23% 증가) 매우 많이 증가하기 때문에 (불필요하게 '이탈'로 분류되는 고객 수가 크게 늘어남.)
+이탈을 놓치는 게 훨씬 큰 손실인 특별한 상황이 아닐경우 0.7로 해야함
+
+<img width="241" height="100" alt="13 최종적으로 0 7recall로 설정했을 때 precision과의 관계" src="https://github.com/user-attachments/assets/523ffd52-69bd-4383-931f-99401cddcce6" />
+<img width="137" height="47" alt="Confusion Matrix" src="https://github.com/user-attachments/assets/6e720bb7-7028-4047-aa02-a01ab2264f78" />
+최종적으로 recall을 0.7로 설정했을 때 precision과의 관계와 confusion matrix
+
+<img width="1200" height="750" alt="per1000_net_profit" src="https://github.com/user-attachments/assets/ec91c9c8-e334-4d34-ae18-b5d21f90085a" />
+<img width="1350" height="900" alt="stack_components_by_scenario" src="https://github.com/user-attachments/assets/d1d27e52-0ed5-4228-b1e9-645722b4d70c" />
+
+1. 각 confusion matrix가 보험 이탈 예측에서 갖는 의미
+TP 1명당 절감되는 손실 금액
+이탈할 고객을 붙잡았을 때 막을 수 있는 평균 손실.
+예: 보험 해지로 잃는 고객 LTV(고객 생애 가치)가 평균 200만원이면, TP 1명당 +200만원 효과.
+
+FP 1명당 대응 비용
+오탐 고객에게 제공한 혜택·마케팅·상담 비용.
+예: 전화 상담·혜택 제공에 평균 5만원.
+
+FN 1명당 손실 금액
+실제 이탈했는데 놓친 고객의 손실 = TP 절감액과 같은 수치로 볼 수 있음.
+예: 200만원.
+
+현재 모델의 혼동행렬(Confusion Matrix)
+TP, FP, TN, FN을 이용 손익 계산
+
+2. 계산 방식
+손익 = (TP × 절감액) - (FP × 대응비) - (FN × 손실액)
+
+Recall을 높이면 TP가 늘고 FN이 줄지만, FP도 늘어납니다.
+
+Precision을 높이면 FP가 줄지만, FN이 늘어납니다.
+
+3. 왜 상황 따라 다른가?
+고객당 LTV가 높은 보험(고액 종신보험)일수록 Recall 극대화 전략이 압도적으로 유리.
+
+반대로 대응 비용이 매우 높은 경우(예: 대면 고급 상담, 고가의 혜택)는 FP가 늘면 부담이 커짐.
+
+따라서 회사의 단가 구조를 알아야 정확한 최적 threshold를 찾을 수 있음.
+
+SoftVote(Recall=0.7) 결과로,
+TP·FP·FN을 이용해서 단가를 가정한 2~3가지 시나리오별 손익 비교표
+threshold 선택에 훨씬 설득력이 붙어요.
+
+1. TP 절감액 (고객 LTV)
+200만 원: 국내 장기보험(예: 자동차, 건강보험)에서 중형급 고객의 평균 잔여 LTV 수준과 비슷
+예: 월 10만 원 보험료 × 잔여기간 20개월 = 200만 원
+120만 원: 단기 계약이거나 보험료가 낮은 상품군에 해당
+300만 원: 고액 장기보험(LTV 높은 고객), 특히 종신보험·고액 건강보험의 경우 현실적
+
+2. FP 1명당 대응 비용
+5만 원: 전화 상담 + 소액 혜택(상품권, 포인트, 할인 등) 수준
+8만 원: 콜센터 + 맞춤형 혜택 + 추가 마케팅 비용이 포함된 경우
+3만 원: 자동화 메시지·저비용 리마케팅 정도일 때 현실적
+
+3. FN 손실액
+대부분 TP 절감액과 동일하게 잡는 게 일반적
+이유: 놓친 고객(FN)은 그대로 해지하므로 LTV 손실 = TP로 막을 수 있었던 금액과 같음
+
+결론적으로,
+
+A (200만 / 5만 / 200만) → 현실적
+B (120만 / 8만 / 120만) → 저가 보험·FP 대응 비용 큰 경우, 충분히 현실적
+C (300만 / 3만 / 300만) → 고가 보험·대응비 낮은 경우, 특히 VIP 고객군 타겟 시 적합
+
+
+LTV(고객 생애 가치, Lifetime Value)란?
+정의: 고객이 우리 회사와 관계를 유지하는 동안 가져다 줄 총이익의 현재가치.
+보험에서는 LTV가 특히 크다. 왜냐하면:
+장기간 계약(5~20년) 동안 매년 보험료를 납부.
+초기 가입 시점에 마케팅·설계사 비용이 크지만, 유지 시 추가비용 적음.
+계약 유지가 곧 안정적인 현금 흐름을 보장.
+LTV가 높다는 말은:
+고객 한 명이 평생(또는 계약 기간) 동안 회사에 기여하는 이익이 크다는 뜻.
+고액·장기보험일수록 LTV가 높아짐.
+이런 경우 **Recall(재가입·유지율)**을 높이는 전략이 훨씬 수익성 있음.
 
 ## 한계점 (Limitations)
 
