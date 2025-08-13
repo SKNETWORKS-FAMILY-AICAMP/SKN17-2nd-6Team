@@ -205,7 +205,7 @@
 ### 4. RandomForest
 - **특징 생성**: 과거·현재 데이터 비교 후 변화량 특징 생성  
 - **범주형 처리**: EDUC, RACE 등 범주형 변수는 원-핫 인코딩 또는 레이블 인코딩  
-- **하이퍼파라미터 탐색**: Optuna, GridSearchCV를 이용해 트리 개수, 최대 깊이 등 최적 파라미터 탐색  
+- **하이퍼파라미터 탐색**: Optuna를 이용해 트리 개수, 최대 깊이 등 최적 파라미터 탐색  
 - **검증 방법**: Stratified K-Fold 교차 검증  
 - **모델 학습**: 최적 파라미터로 전체 데이터 학습  
 - **평가 지표**: ROC AUC, Accuracy 등  
@@ -214,8 +214,8 @@
 
 ### 5. Logistic Regression
 - **특징 생성**: 과거·현재 데이터 비교 후 변화량 특징 생성  
-- **전처리**: 수치형 변수는 StandardScaler 또는 MinMaxScaler로 정규화, 범주형 변수는 원-핫 인코딩  
-- **하이퍼파라미터 탐색**: GridSearchCV로 규제 강도(C), 규제 종류(penalty) 등 최적 파라미터 탐색  
+- **전처리**: 수치형 변수의 NCHILD, AGE는 절대값 그대로 EARNWEEK는 퍼센트 변화로, 범주형 변수는 원-핫 인코딩 및 그룹화
+- **하이퍼파라미터 탐색**: Optuna로 최적 파라미터 탐색  
 - **검증 방법**: Stratified K-Fold 교차 검증  
 - **모델 학습**: 최적 파라미터로 전체 데이터 학습  
 - **평가 지표**: ROC AUC, Accuracy, Precision, Recall  
