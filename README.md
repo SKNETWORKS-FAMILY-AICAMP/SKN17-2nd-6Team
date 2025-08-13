@@ -58,11 +58,15 @@
 
 <br>
 
-## 🌟 프로젝트 소개
-#### 본 프로젝트는 **미국 인구조사국(Census Bureau)과 노동통계국(BLS)**이 공동으로 수집하는 **CPS-ASEC(Annual Social and Economic Supplement)** 데이터를 활용하여 **민간 보험(Private Health Insurance) 이탈 여부**를 예측하는 것을 목표로 한다.  
-미국 거주자의 인구통계학적 정보(나이, 인종, 교육 수준 등)와 경제·고용 상태, 과거 및 현재 보험 가입 상태를 비교하여 **나이 변화, 소득 변화율** 등의 변화량 특징을 생성하였다.  
-이후 범주형 변수 처리, 하이퍼파라미터 최적화(Optuna), 교차 검증(Stratified K-Fold), Early Stopping 등의 절차를 거쳐 XGBoost, CatBoost, LightGBM, RandomForest, Logistic Regression 등 다양한 머신러닝 모델을 학습 및 평가하였다.  
-최종적으로 ROC AUC 등 여러 성능 지표를 활용하여 모델을 비교하고, 아티팩트 저장을 통해 재사용 가능하도록 구성하였다.
+## 📜 프로젝트 소개  
+본 프로젝트는 **미국 인구조사국(Census Bureau)** 과 **노동통계국(BLS)** 이 공동 수집하는 **CPS-ASEC(Annual Social and Economic Supplement)** 데이터를 활용하여 **민간 보험 이탈 여부**를 예측하는 것이 목표입니다.  
+
+- 인구통계·경제·고용 상태 + 과거·현재 보험 가입 정보 비교  
+- 변화량(나이, 소득 변화율 등) 특징 생성  
+- 범주형 변수 처리 → 하이퍼파라미터 최적화(Optuna)  
+- 교차 검증(Stratified K-Fold) + Early Stopping  
+- 모델: XGBoost, CatBoost, LightGBM, RandomForest, Logistic Regression  
+- ROC AUC 등 지표 비교 + 아티팩트 저장
  
 <br>
 
@@ -121,20 +125,31 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
 # 5. 데이터 전처리 결과서
 ## 데이터 전처리 과정
 
-1. **데이터 로드 및 컬럼 분석**
-   
-      <img width="761" height="216" alt="1 컬럼명" src="https://github.com/user-attachments/assets/701942e6-0f29-4c29-9f67-e3eb14ecaa92" />
-   
-      YEAR: Survey year, CPSIDP: person record, PHINSUR: Reported covered by private health insurance last year									
+### **1️⃣ 데이터 로드 및 컬럼 분석**
 
-      AGE: Age, NCHILD:	Number of own children in household, EARNWEEK: Weekly earnings
-				
-	  EMPSTAT: Employment status, LABFORCE: Labor force status, HICHAMP: Covered by military health insurance last year, CAIDLY: Covered by Medicaid last year, MARST: Marital status
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/701942e6-0f29-4c29-9f67-e3eb14ecaa92" width="80%" alt="컬럼명"/>
+</p>
 
-      RACE: Race, EDUC: Educational attainment recode
+**주요 컬럼 설명**
+- **YEAR**: Survey year  
+- **CPSIDP**: Person record  
+- **PHINSUR**: Reported covered by private health insurance last year  
+- **AGE**: Age  
+- **NCHILD**: Number of own children in household  
+- **EARNWEEK**: Weekly earnings  
+- **EMPSTAT**: Employment status  
+- **LABFORCE**: Labor force status  
+- **HICHAMP**: Covered by military health insurance last year  
+- **CAIDLY**: Covered by Medicaid last year  
+- **MARST**: Marital status  
+- **RACE**: Race  
+- **EDUC**: Educational attainment recode  
+
+---
 
  
-   - Boxplot, Barplot: 인종별/혼인 상태별 평균 나이 비교
+   **Boxplot, Barplot: 인종별/혼인 상태별 평균 나이 비교**
      
 <p align="center">
     <img src="image/p_1.png" width="70%">
@@ -150,38 +165,66 @@ CPS-ASEC 데이터는 전국 규모의 표본을 기반으로 하여, 인구통�
 <p align='center'>교육수준에 따른 평균 주당 분포</p>
 
 
-SERIAL — 가구 일련번호 (5자리 숫자), PERNUM — 가구 내 개인 번호 (2자리), CPSIDV — 검증된 종단 식별자 (15자리 숫자), ASECWT — ASEC 개인 가중치 (소수 4자리 암시)
+**제외 컬럼 설명**
+- **SERIAL**: 가구 일련번호 (5자리 숫자)  
+- **PERNUM**: 가구 내 개인 번호 (2자리)  
+- **CPSIDV**: 검증된 종단 식별자 (15자리 숫자)  
+- **ASECWT**: ASEC 개인 가중치 (소수 4자리 암시)  
+- **HFLAG**: 데이터 수집 방식  
+- **ASECFLAG**: 조사 유형  
+- **ASECWTH**: 가중치 스케일  
+- **Month**: 월 정보  
 
-추가적인 개인 식별용 변수, YEAR, CPSIDP로 한 사람을 추정할 수 있기 때문에 무의미
-
-HFLAG - 데이터 수집 방식, ASECFLAG - 조사 유형, ASECWTH - 가중치 스케일, Month - 월 정보
-
-위는 분석 대상의 실제 특성과는 직접적인 연관이 없고,
-모델 입력 변수로 활용할 경우 의미 있는 설명력이나 예측력을 제공하지 않는 보조·메타 정보이기 때문에 제외
+위 변수들은 분석 대상의 실제 특성과 직접적인 연관이 없으며,  
+모델 입력 변수로 활용 시 설명력·예측력이 부족한 **보조/메타 정보**이므로 제외.
    
-   - 주요 분석 컬럼(`YEAR`, `AGE`, `RACE`, `MARST`, `EDUC`, `EARNWEEK`, `PHINSUR` 등)
-   - 사용되지 않는 컬럼 (`SERIAL`, `ASECFLAG`, `ASECWTH`, `PERNUM`, `CPSIDV`, `ASECWT`, `Month` 등) 
+**정리**
+- **주요 분석 컬럼**: `YEAR`, `AGE`, `RACE`, `MARST`, `EDUC`, `EARNWEEK`, `PHINSUR` 등  
+- **사용되지 않는 컬럼**: `SERIAL`, `ASECFLAG`, `ASECWTH`, `PERNUM`, `CPSIDV`, `ASECWT`, `Month` 등
+
+<br>
      
-2. **사용할 샘플과 타겟데이터 설정**
+### **2️⃣ 사용할 샘플과 타겟데이터 설정**
    
-   <img width="517.5" height="450" alt="2 사용할 샘플과 타겟데이터 설정" src="https://github.com/user-attachments/assets/e71e20bf-fb52-48bd-a090-0089e9fe8029" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e71e20bf-fb52-48bd-a090-0089e9fe8029" width="60%" alt="샘플과 타겟 설정"/>
+</p>
 
-   - PHINSUR 변화를 target으로 설정, YEAR: Survey year, CPSIDP: person record를 Private Key로 사용해 한 사람 추적
-   - 샘플 수 확인
+- **PHINSUR 변화** → **Target**으로 설정  
+- **YEAR**, **CPSIDP** → Private Key로 사용하여 한 사람 추적  
+- 샘플 수 확인
 
-3. **변화량으로 피쳐엔지니어링**
-   <img width="832" height="122" alt="수치형" src="https://github.com/user-attachments/assets/9a832b92-2fde-43ee-877d-f7e59fe784a4" />
+### **3️⃣ 변화량으로 피쳐엔지니어링**
+<!-- 수치형 변화량 -->
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9a832b92-2fde-43ee-877d-f7e59fe784a4" width="700px" alt="수치형 변화량"/>
+</p>
 
-   <img width="465" height="453" alt="EDUC 그룹화" src="https://github.com/user-attachments/assets/b1a2e66a-48ec-4b42-bc89-ab529bf8f989" />
+<!-- EDUC & RACE 그룹화 (2개 나란히) -->
+<table align="center">
+<tr>
+  <td align="center">
+    <img src="https://github.com/user-attachments/assets/b1a2e66a-48ec-4b42-bc89-ab529bf8f989" width="350px" alt="EDUC 그룹화"/>
+  </td>
+  <td align="center">
+    <img src="https://github.com/user-attachments/assets/e278dc11-0cd2-4c5c-a9f9-f805d70fb319" width="350px" alt="RACE 그룹화"/>
+  </td>
+</tr>
+</table>
 
-   <img width="376" height="372" alt="RACE 그룹화" src="https://github.com/user-attachments/assets/e278dc11-0cd2-4c5c-a9f9-f805d70fb319" />
+<!-- 범주형 변화 여부 -->
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d46d1982-4ef2-4a91-b2dc-2de3adbafcf9" width="700px" alt="범주형 변화 여부"/>
+</p>
 
-   <img width="683" height="65" alt="범주형 변화여부 EDUC RACE빼야함" src="https://github.com/user-attachments/assets/d46d1982-4ef2-4a91-b2dc-2de3adbafcf9" />
 
 
-   - AGE, NCHILD의 변화량은 절대값으로 사용, EARNWEEK는 퍼센트 변화량으로 사용
-   - RACE와 EDUC을 제외한 범주형은 동일하게 변화여부 확인
-   - RACE와 EDUC은 모델별로 원핫인코딩, 그룹화 등 진행
+
+**처리 방식**
+- **AGE**, **NCHILD** → 절대값 변화량 사용  
+- **EARNWEEK** → 퍼센트 변화량 사용  
+- 범주형 변수 → **RACE**와 **EDUC** 제외 후 변화 여부 생성  
+- **RACE**, **EDUC** → 모델별로 원핫인코딩·그룹화 등 별도 처리
 
 ---
 
@@ -240,21 +283,25 @@ HFLAG - 데이터 수집 방식, ASECFLAG - 조사 유형, ASECWTH - 가중치 �
 
 # 7. 수행결과(테스트 결과 화면 또는 시연 페이지)
 
-<img width="755" height="136" alt="8 최종 선정된 다섯가지 모델들과 지표들" src="https://github.com/user-attachments/assets/eb2ed917-91ee-457d-8612-ab0852a2528b" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/eb2ed917-91ee-457d-8612-ab0852a2528b" width="80%" alt="최종 선정된 다섯가지 모델들과 지표들"/>
+</p>
 
-다섯가지 모델 별 평가
+📝 다섯 가지 모델 별 평가
 
-<img width="755" height="136" alt="9999" src="https://github.com/user-attachments/assets/88cdbb76-fd45-431c-9ea1-d92653f6df62" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/88cdbb76-fd45-431c-9ea1-d92653f6df62" width="80%" alt="모델별 평가"/>
+</p>
 
-CatBoost의 경우 진행하다보니 precision과 recall의 값이 너무 크게 변화하는 걸 확인해서 사용하지 않기로 결정.
-logistic regression의 경우 변수간의 관계가 선형적이지 않고 값도 다른 모델에 비해 좋지 않기 때문에 사용하지 않기로 결정.
+- **CatBoost** → Precision과 Recall의 값 변동 폭이 너무 커서 제외.
+- **Logistic Regression** → 변수 간 관계가 선형적이지 않고, 성능이 낮아 제외.
 
 <img width="755" height="136" alt="10 RF XGB LGBM + 세가지 합 친SOFTVOTE 로진행" src="https://github.com/user-attachments/assets/d763636f-e6c5-42fc-b480-07d343774056" />
 
-최종적으로 선정된 XGB, LGBM, RandomForest를
-지표 향상을 위해 softvoting방식으로 사용
-
-보험 이탈 예측이 주 목적이기 때문에 recall을 가장 중요한 지표라고 판단, recall에 따른 값의 변화를 그래프로 파악
+- 최종 선정 모델: **XGB, LGBM, RandomForest**
+- **Soft Voting 방식**으로 지표 향상 시도
+  
+- 목표: **보험 이탈 예측** → Recall을 가장 중요한 지표로 판단
 
 <img width="700" height="500" alt="softvote_confusion_counts_vs_target_recall" src="https://github.com/user-attachments/assets/c20fab20-02f7-4e92-b9ff-1a7535b33157" />
 <img width="700" height="500" alt="softvote_threshold_vs_target_recall" src="https://github.com/user-attachments/assets/cf12e6f6-1e27-408a-ad28-61862685d24c" />
@@ -265,7 +312,7 @@ logistic regression의 경우 변수간의 관계가 선형적이지 않고 값�
 
 softvote방식에서 recall값에 따른 precision과 confusion matrix값을 확인
 
-recall에 따른 요약
+### 📌 Recall 변화 요약
 Recall ↑ 0.70 → 0.80로 올리면 놓치는 이탈(FN)이 5,001 → 3,389 (32% 감소)
 즉, 더 많은 이탈자를 잡아냄.
 Precision ↓
@@ -279,27 +326,25 @@ F1 Score ↓
 Precision 하락 폭이 Recall 상승 효과보다 커서 F1은 떨어짐.
 
 
-선택 가이드
-Recall 0.70 → 균형형. Precision과 F1이 조금 더 높음.
-⇒ "이탈자 놓침도 줄이고, 오탐 부담도 너무 크지 않게" 하려면 적합.
-Recall 0.80 → 공격형. 놓치는 이탈자를 최소화하려고 FP 증가 감수.
-⇒ "이탈을 놓치는 게 훨씬 큰 손실"인 상황(예: 보험 해약 방지 캠페인)이라면 적합.
+### 📌 선택 가이드
+- **Recall 0.70 (균형형)**  
+  → Precision과 F1이 더 높고, 오탐 부담이 크지 않음.  
+- **Recall 0.80 (공격형)**  
+  → 이탈자 놓침을 최소화하나, 오탐 비용 증가.
 
-최종 결론 : 0.7 > 0.8로 늘릴경우 
-FP(오탐)가 73,707 → 91,159 (약 23% 증가) 매우 많이 증가하기 때문에 (불필요하게 '이탈'로 분류되는 고객 수가 크게 늘어남.)
-이탈을 놓치는 게 훨씬 큰 손실인 특별한 상황이 아닐경우 0.7로 해야함
+> 결론: 특별한 상황(이탈 놓침이 큰 손실)이 아니면 **Recall 0.7** 선택.
+
 
 <img width="241" height="100" alt="13 최종적으로 0 7recall로 설정했을 때 precision과의 관계" src="https://github.com/user-attachments/assets/523ffd52-69bd-4383-931f-99401cddcce6" />
 <img width="137" height="47" alt="Confusion Matrix" src="https://github.com/user-attachments/assets/6e720bb7-7028-4047-aa02-a01ab2264f78" />
 
 최종적으로 recall을 0.7로 설정했을 때 precision과의 관계와 confusion matrix
 
-### 인사이트
-Recall을 높이기 위해 Precision 일부 포기 → 저비용 마케팅 전략 필요
-
-Precision 보완 방안 → 고객군 세분화, 고위험군 집중 마케팅
-
-TP, FP, FN, TN 기반 가상 비용 산정 → 마케팅 예산 계획 반영 가능
+## 💡 인사이트
+- Recall을 높이기 위해 Precision 일부 포기 → **저비용 마케팅 전략 필요**
+- Precision 보완 → 고객군 세분화, 고위험군 집중 마케팅
+- TP·FP·FN·TN 기반 **가상 비용 산정** → 마케팅 예산 계획 반영
+  
 
 가상 비용 분석 예시: 
 | 구분 | 의미       | 단가    | 효과/손실 |
@@ -345,15 +390,20 @@ TP, FP, FN, TN 기반 가상 비용 산정 → 마케팅 예산 계획 반영 �
 120만 원: 단기 계약이거나 보험료가 낮은 상품군에 해당
 300만 원: 고액 장기보험(LTV 높은 고객), 특히 종신보험·고액 건강보험의 경우 현실적
 
+
+
 - FP 1명당 대응 비용
 5만 원: 전화 상담 + 소액 혜택(상품권, 포인트, 할인 등) 수준
 8만 원: 콜센터 + 맞춤형 혜택 + 추가 마케팅 비용이 포함된 경우
 3만 원: 자동화 메시지·저비용 리마케팅 정도일 때 현실적
 
+
 - FN 손실액
 대부분 TP 절감액과 동일하게 잡는 게 일반적
 이유: 놓친 고객(FN)은 그대로 해지하므로 LTV 손실 = TP로 막을 수 있었던 금액과 같음
 
+
+  
   결론적으로,
 
 	A (200만 / 5만 / 200만) → 일반적인 보험
